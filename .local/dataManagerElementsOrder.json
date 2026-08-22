@@ -1,0 +1,59 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Assets&"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [
+        "TestTimeOut&",
+        "TimeOutMessage&"
+      ],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Apps/Project Validations.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Assets&d7f775ff-bc1e-498f-a114-78f4c731e994",
+        "intRandom&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [
+        "TestTimeOut&",
+        "TimeOutMessage&",
+        "TestTimeOut&d7f775ff-bc1e-498f-a114-78f4c731e994",
+        "TimeOutMessage&d7f775ff-bc1e-498f-a114-78f4c731e994"
+      ],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "TestFramework/Utils/KillAllProcesses.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Assets&d7f775ff-bc1e-498f-a114-78f4c731e994"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [
+        "TestTimeOut&d7f775ff-bc1e-498f-a114-78f4c731e994",
+        "TimeOutMessage&d7f775ff-bc1e-498f-a114-78f4c731e994"
+      ],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "MFP_My First TestCase.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Assets&d7f775ff-bc1e-498f-a114-78f4c731e994"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [
+        "TestTimeOut&",
+        "TimeOutMessage&"
+      ],
+      "AddedNamespaces": null
+    }
+  ]
+}
