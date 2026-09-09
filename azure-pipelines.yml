@@ -15,5 +15,19 @@ steps:
     testProjectPath: 'project.json'
     environment: 'IniciaME'
     folderName: 'Azure_Testing'
-    testReportDestination: 'result.json'
+    testReportDestination: '$(Build.ArtifactStagingDirectory)/result.json'
     traceLevel: 'Verbose'
+
+# 2. Empaquetar el proyecto de UiPath (.nupkg)
+- task: UiPathPack@6
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)/project.json'
+    outputPath: '$(Build.ArtifactStagingDirectory)'
+
+# 3. Publicar los resultados y el paquete en Azure DevOps
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
