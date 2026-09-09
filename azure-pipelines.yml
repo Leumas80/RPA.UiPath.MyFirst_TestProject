@@ -15,7 +15,7 @@ steps:
     testProjectPath: 'project.json'
     environment: 'IniciaME'
     folderName: 'Azure_Testing'
-    testReportDestination: '$(Build.ArtifactStagingDirectory)/result.json'
+    testReportDestination: 'testResult.xml'
     traceLevel: 'Verbose'
 
 # 2. Empaquetar el proyecto de UiPath (.nupkg)
