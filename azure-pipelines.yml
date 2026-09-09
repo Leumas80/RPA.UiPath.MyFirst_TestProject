@@ -7,8 +7,10 @@ pool:
     - Agent.Name -equals DESKTOP-UIPATH
 
 steps:
+- task: UiPathInstallPlatform@6
+  inputs:
+    cliType: 'Windows'
 
-# 1. Ejecutar las pruebas automatizadas del proyecto
 - task: UiPathTest@6
   inputs:
     testTarget: 'TestProject'
@@ -18,18 +20,14 @@ steps:
     environment: 'IniciaME'
     folderName: 'Azure_Testing'
     testReportDestination: '$(Build.ArtifactStagingDirectory)/testResult.xml'
-    skipResultsPublishing: true
     traceLevel: 'Verbose'
 
-# 2. Empaquetar el proyecto de UiPath (.nupkg)
 - task: UiPathPack@6
   inputs:
-    projectJsonPath: '$(Build.SourcesDirectory)/project.json'
     versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)/project.json'
     outputPath: '$(Build.ArtifactStagingDirectory)'
-    orchestratorConnection: 'UiPath_TestConnection'
 
-# 3. Publicar los resultados y el paquete en Azure DevOps
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
