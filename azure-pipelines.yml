@@ -3,30 +3,17 @@ trigger:
 
 pool:
   name: 'CICD_Testing'
-  demands:
-    - Agent.Name -equals DESKTOP-UIPATH
+  agent: 'DESKTOP-UIPATH'
 
 steps:
 # 1. Ejecutar las pruebas automatizadas del proyecto
-- task: UiPathTest@4
+- task: UiPathTest@6
   inputs:
     testTarget: 'TestProject'
     orchestratorConnection: 'UiPath_TestConnection'
-    testProjectPath: '$(Build.SourcesDirectory)/project.json'
+    projectKey: '9193efec-8988-0000-b111-0b49fcaa3f63'
+    testProjectPath: 'project.json'
+    environment: 'IniciaME'
     folderName: 'Azure_Testing'
-    testReportDestination: '$(Build.ArtifactStagingDirectory)/result.xml'
+    testReportDestination: 'result.json'
     traceLevel: 'Verbose'
-
-# 2. Empaquetar el proyecto UiPath (.nupkg)
-- task: UiPathPack@4
-  inputs:
-    versionType: 'AutoVersion'
-    projectJsonPath: '$(Build.SourcesDirectory)/project.json'
-    outputPath: '$(Build.ArtifactStagingDirectory)'
-
-# 3. Publicar el artefacto en Azure DevOps
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
