@@ -7,10 +7,13 @@ pool:
     - Agent.Name -equals DESKTOP-UIPATH
 
 steps:
+# 1. Instalar UiPath CLI en el agente
 - task: UiPathInstallPlatform@6
+  name: cliStep
   inputs:
     cliType: 'Windows'
 
+# 2. Ejecutar las pruebas unitarias / de integración
 - task: UiPathTest@6
   inputs:
     testTarget: 'TestProject'
@@ -22,12 +25,14 @@ steps:
     testReportDestination: '$(Build.ArtifactStagingDirectory)/testResult.xml'
     traceLevel: 'Verbose'
 
+# 3. Empaquetar el proyecto (.nupkg)
 - task: UiPathPack@6
   inputs:
     versionType: 'AutoVersion'
     projectJsonPath: '$(Build.SourcesDirectory)/project.json'
     outputPath: '$(Build.ArtifactStagingDirectory)'
 
+# 4. Publicar artefactos
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
